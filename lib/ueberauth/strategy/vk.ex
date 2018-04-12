@@ -213,7 +213,10 @@ defmodule Ueberauth.Strategy.VK do
     end
   end
   defp query_params(conn, :user_id) do
-    %{"user_ids" => conn.private.vk_token.other_params["user_id"]}
+    case conn.private.vk_token.other_params["user_id"] do
+      nil -> %{}
+      user_id -> %{"user_ids" => user_id}
+    end
   end
   defp query_params(conn, :access_token) do
     %{"access_token" => conn.private.vk_token.access_token}
