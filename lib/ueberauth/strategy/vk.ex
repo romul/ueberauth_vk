@@ -131,7 +131,7 @@ defmodule Ueberauth.Strategy.VK do
       location: user["city"],
       description: user["about"],
       urls: %{
-        vk: "https://vk.com/id" <> to_string(user["uid"])
+        vk: "https://vk.com/id" <> to_string(user["id"])
       }
     }
   end
@@ -222,7 +222,7 @@ defmodule Ueberauth.Strategy.VK do
     %{"access_token" => conn.private.vk_token.access_token}
   end
   defp query_params(conn, :version) do
-    %{"v" => "5.8"}
+    %{"v" => "5.122"}
   end
 
   defp option(conn, key) do
